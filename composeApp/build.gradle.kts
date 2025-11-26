@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -28,6 +29,10 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            implementation("io.ktor:ktor-client-okhttp:3.0.0")
+            implementation("io.ktor:ktor-client-logging:3.0.0")
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -39,6 +44,16 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(compose.materialIconsExtended)
+            implementation("io.ktor:ktor-client-core:3.0.0")
+
+            implementation("io.ktor:ktor-client-content-negotiation:3.0.0")
+            implementation("io.ktor:ktor-serialization-kotlinx-json:3.0.0")
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
+        }
+
+        iosMain.dependencies {
+            implementation("io.ktor:ktor-client-darwin:3.0.0")
 
         }
         commonTest.dependencies {

@@ -8,17 +8,36 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.cryptotrackerkmp.crypto.data.CoinCapApi
+import com.example.cryptotrackerkmp.crypto.data.CryptoListRepositoryImpl
+import com.example.cryptotrackerkmp.crypto.domain.GetCryptoAssetsUseCase
+import com.example.cryptotrackerkmp.crypto.presentation.CryptoListViewModel
 import com.example.cryptotrackerkmp.crypto.presentation.coin_list.components.CoinListItem
-import com.example.cryptotrackerkmp.crypto.presentation.coin_list.components.previewCoin
-import com.example.cryptotrackerkmp.crypto.presentation.models.toCoinUi
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun CoinListScreen(modifier: Modifier= Modifier,
-                   state: CoinListState) {
+fun CoinListScreen() {
+
+
+    val viewModel = remember {
+        val api = CoinCapApi()
+        val repo = CryptoListRepositoryImpl(api)
+        val useCase = GetCryptoAssetsUseCase(repo)
+        CryptoListViewModel(useCase)
+    }
+
+    val state by viewModel.uiState.collectAsStateWithLifecycle()
+
+    LaunchedEffect(Unit) {
+        viewModel.loadAssets()
+    }
 
     if (state.isLoading){
         Box(modifier = Modifier.fillMaxSize(),
@@ -44,12 +63,11 @@ fun CoinListScreen(modifier: Modifier= Modifier,
 @Preview
 @Composable
 fun PreviewCoinListScreen(){
-
-    CoinListScreen(
-        state = CoinListState(
-            coinList = (1..100).map {
-                previewCoin.copy(id = it.toString()).toCoinUi()
-            }
-        )
-    )
+//    CoinListScreen(
+//        state = CoinListState(
+//            coinList = (1..100).map {
+//                previewCoin.copy(id = it.toString()).toCoinUi()
+//            }
+//        )
+//    )
 }

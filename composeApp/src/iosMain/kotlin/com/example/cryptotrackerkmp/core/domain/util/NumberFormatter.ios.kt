@@ -1,8 +1,8 @@
-package com.example.cryptotrackerkmp.util
+package com.example.cryptotrackerkmp.core.domain.util
 
+import platform.Foundation.NSNumber
 import platform.Foundation.NSNumberFormatter
 import platform.Foundation.NSNumberFormatterDecimalStyle
-import platform.Foundation.NSNumber
 
 actual fun formatDouble(value: Double, fractionDigits: Int): String {
     val formatter = NSNumberFormatter().apply {

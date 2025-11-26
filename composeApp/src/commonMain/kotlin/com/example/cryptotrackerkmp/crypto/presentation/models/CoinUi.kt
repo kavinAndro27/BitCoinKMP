@@ -1,9 +1,9 @@
 package com.example.cryptotrackerkmp.crypto.presentation.models
 
 import com.example.cryptotrackerkmp.crypto.domain.Coin
-import com.example.cryptotrackerkmp.util.DisplayableNumber
-import com.example.cryptotrackerkmp.util.getDrawableIdForCoin
-import com.example.cryptotrackerkmp.util.toDisplayableNumber
+import com.example.cryptotrackerkmp.core.presentation.util.DisplayableNumber
+import com.example.cryptotrackerkmp.core.presentation.util.getDrawableIdForCoin
+import com.example.cryptotrackerkmp.core.presentation.util.toDisplayableNumber
 import org.jetbrains.compose.resources.DrawableResource
 
 data class CoinUi(

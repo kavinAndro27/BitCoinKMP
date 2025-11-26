@@ -1,4 +1,4 @@
-package com.example.cryptotrackerkmp.util
+package com.example.cryptotrackerkmp.core.domain.util
 
 import android.icu.text.NumberFormat
 import java.util.Locale

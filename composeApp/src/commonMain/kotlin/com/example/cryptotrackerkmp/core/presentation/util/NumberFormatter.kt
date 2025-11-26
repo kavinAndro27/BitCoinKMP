@@ -1,4 +1,6 @@
-package com.example.cryptotrackerkmp.util
+package com.example.cryptotrackerkmp.core.presentation.util
+
+import com.example.cryptotrackerkmp.core.domain.util.formatDouble
 
 
 data class DisplayableNumber(
@@ -6,7 +8,6 @@ data class DisplayableNumber(
     val formatted: String
 )
 
-expect fun formatDouble(value: Double, fractionDigits: Int = 2): String
 
 fun Double.toDisplayableNumber(): DisplayableNumber {
     return DisplayableNumber(

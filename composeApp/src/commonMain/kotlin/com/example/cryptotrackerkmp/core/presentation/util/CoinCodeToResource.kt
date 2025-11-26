@@ -1,4 +1,4 @@
-package com.example.cryptotrackerkmp.util
+package com.example.cryptotrackerkmp.core.presentation.util
 
 import com.example.cryptotrackerkmp.Res
 import com.example.cryptotrackerkmp._inch
@@ -143,6 +143,7 @@ import com.example.cryptotrackerkmp.crep
 import com.example.cryptotrackerkmp.cro
 import com.example.cryptotrackerkmp.crpt
 import com.example.cryptotrackerkmp.crv
+import com.example.cryptotrackerkmp.crypto.domain.Coin
 import com.example.cryptotrackerkmp.cs
 import com.example.cryptotrackerkmp.csai
 import com.example.cryptotrackerkmp.csc
@@ -671,6 +672,8 @@ import com.example.cryptotrackerkmp.zil
 import com.example.cryptotrackerkmp.zks
 import com.example.cryptotrackerkmp.zrx
 import org.jetbrains.compose.resources.DrawableResource
+
+
 
 
 fun getDrawableIdForCoin(symbol: String): DrawableResource {
